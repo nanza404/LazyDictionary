@@ -1,23 +1,23 @@
+import main
 from bs4 import BeautifulSoup as bs
 import requests
 import re
 
-url = 'https://www.merriam-webster.com/dictionary/' 
-word = ''
 
-def wordLogger():
-    curr_entry = 'dictionary-entry-1'
+def getDefinition():
     # grabs the html of the url
-    source = requests.get(url).text
+    source = requests.get(main.Dict.url).text
     # parses the html
-    soup = bs(source, 'lxml')
+    soup = bs(source, 'html.parser')
     # edit up to the first dictionary entery and make it more managable
     # (maybe dont strip strings)
-    string_section = soup.find('div', id=curr_entry).stripped_strings
+    #string_section = soup.find('div', id=curr_entry).stripped_strings
+    string_section = soup.find
     return string_section
 
 
-def parse():
+def parse(string):
+
     return 0
 
 
