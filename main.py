@@ -4,20 +4,22 @@ import pyperclip as pc
 import webbrowser as wb
 
 class Dict:
-    url = 'https://www.merriam-webster.com/dictionary/' 
-    word = ''
-    
+    url = ''
+
     def paste():
         word = pc.paste()
         return word
     
+    def sendUrl():
+        # sets url
+        url = 'https://www.merriam-webster.com/dictionary/' + Dict.paste() 
+        return url
     
     def openDict():
-        url = 'https://www.merriam-webster.com/dictionary/' + Dict.paste() 
         # opens up the url in a web browser
-        wb.open_new(url)
+        wb.open_new(Dict.sendUrl())
         # calls the html parse function
-        hp.getDefinition()
+        hp.parse()
 
 
 class keyLog:
@@ -34,8 +36,4 @@ class keyLog:
         hm.KeyDown = keyLog.OnKeyPress
         hm.HookKeyboard()
         hm.start()
-
-
-# starts logging keys
-keyLog.keyLogStart()
 
