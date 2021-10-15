@@ -18,8 +18,12 @@ class Dict:
     def openDict():
         # opens up the url in a web browser
         wb.open_new(Dict.sendUrl())
-        # calls the html parse function
         hp.parse()
+
+        ## if invalid word is entered it is not written to dictionary
+        #if hp.errorHandle():
+        #    # calls the html parse function
+        #    hp.parse()
 
 
 class keyLog:
