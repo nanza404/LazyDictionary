@@ -27,7 +27,6 @@ class Dict:
 
 
 class keyLog:
-
     #Keylogger(pyxhook)
     # logs users key strokes waiting for trigger input
     def OnKeyPress(event):
@@ -35,9 +34,13 @@ class keyLog:
         if event.Key == 'F1':
             Dict.openDict()
 
-    def keyLogStart():
+    def keyLogger():
         hm = ph.HookManager()
         hm.KeyDown = keyLog.OnKeyPress
         hm.HookKeyboard()
         hm.start()
+        running = True
+        #while running:
+        #    pass
+        #hm.cancel()
 
