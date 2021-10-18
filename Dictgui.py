@@ -8,7 +8,6 @@ import main
 
 
 class Window(QWidget):
-    global running
     def __init__(self):
         super().__init__()
         self.setWindowTitle('LazyDictionary')
@@ -33,14 +32,14 @@ class Window(QWidget):
     def clickButton0(self):
         self.btn0.setStyleSheet('background-color:grey')
         self.btn1.setStyleSheet('background-color:red')
-        main.keyLog.keyLogger()
+        #main.keyLogger()
+        main.start()
         
 
     def clickButton1(self):
         self.btn1.setStyleSheet('background-color:grey')
         self.btn0.setStyleSheet('background-color:green')
-        print('stopped')
-        running = False
+        main.end()
 
 
 app = QApplication(sys.argv)
