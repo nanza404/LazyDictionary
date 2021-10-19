@@ -2,7 +2,7 @@ import main
 from bs4 import BeautifulSoup as bs
 import requests
 from datetime import datetime
-import Dictgui
+
 
 def grabHtml():
     # grabs the full html of the url
@@ -26,8 +26,6 @@ def parse():
 
 
 def writeToDictFile(formatedDefinition):
-    # increments the word counter
-    Dictgui.window.changeText()
     # some text formating
     word = main.paste().upper()
     dictHeader = '<' + 5*'-' + 'Definition of ' + word + 5*'-' + '>\n'
@@ -38,25 +36,4 @@ def writeToDictFile(formatedDefinition):
     # opens up a file to append the dictionary definitions
     with open('Dictionary.txt', 'a') as f:
         f.write(dictEntry)
-
-
-#def errorHandle():
-#    text = grabHtml() 
-#    # is None then there is no definition(word to malformed)
-#    text1 = text.find('div', attrs={'class':'words_fail_us_cont search-results'})
-#    # word is some how misspelled and the website offers suggestions
-#    text2 = text.find('p', attrs={'class':'missing-query'})
-#    # if text1 or text2 return None then it is a dictionary webpage
-#    if text1 == None:
-#        if text2 == None:
-#            text1, text2 = ' ', ' '
-#            print('text1 true')
-#            return True
-#    else:
-#        text1, text2 = ' ', ' '
-#        print('false')
-#        return False
-
-
-
 
