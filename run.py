@@ -1,5 +1,8 @@
-import main
+from PyQt6.QtWidgets import QApplication
+import sys
+import Dictgui
 
-
-# starts logging keys and kickstarts the whole program
-main.keyLog.keyLogStart()
+app = QApplication(sys.argv)
+window = Dictgui.Window()
+window.show()
+sys.exit(app.exec())

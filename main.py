@@ -11,12 +11,12 @@ def paste():
 
 def sendUrl():
     # sets url
-    url = 'https://www.merriam-webster.com/dictionary/' + Dict.paste() 
+    url = 'https://www.merriam-webster.com/dictionary/' + paste() 
     return url
 
 def openDict():
     # opens up the url in a web browser
-    wb.open_new(Dict.sendUrl())
+    wb.open_new(sendUrl())
     hp.parse()
 
 #Keylogger(pyxhook)
@@ -24,16 +24,21 @@ def openDict():
 def OnKeyPress(event):
     # registers when F1 is pressed
     if event.Key == 'F1':
-        Dict.openDict()
+        openDict()
 
 def keyLogger():
     global hm
     hm = ph.HookManager()
-    hm.KeyDown = keyLog.OnKeyPress
+    hm.KeyDown = OnKeyPress
     hm.HookKeyboard()
     #hm.start()
 
 def start():
+    try:
+        hm.cancel()
+    except:
+        pass
+    keyLogger()
     hm.start()
 
 def end():

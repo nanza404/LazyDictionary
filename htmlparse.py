@@ -2,10 +2,11 @@ import main
 from bs4 import BeautifulSoup as bs
 import requests
 from datetime import datetime
+import Dictgui
 
 def grabHtml():
     # grabs the full html of the url
-    source = requests.get(main.Dict.sendUrl()).text
+    source = requests.get(main.sendUrl()).text
     # parses the html
     soup = bs(source, 'lxml')
     return soup 
@@ -15,6 +16,7 @@ def parse():
     formatedDefinition = ''
     # extracts the dictionary definitions
     defSection = grabHtml().find_all('span', attrs={'class':'dtText'})
+    # makes sure the definition isnt empty
     if defSection != []:
         # parses the list of dictionary definitions
         for text in defSection:
@@ -24,8 +26,10 @@ def parse():
 
 
 def writeToDictFile(formatedDefinition):
+    # increments the word counter
+    Dictgui.window.changeText()
     # some text formating
-    word = main.Dict.paste().upper()
+    word = main.paste().upper()
     dictHeader = '<' + 5*'-' + 'Definition of ' + word + 5*'-' + '>\n'
     dateAndTime = datetime.now().strftime('------%m/%d/%y  %I:%M %p------')
     dictCapstone = '\n<' + (26+len(word))*'-' + '>\n\n\n'
