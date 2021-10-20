@@ -4,6 +4,8 @@ import requests
 from datetime import datetime
 
 
+wordCount = 0
+
 def grabHtml():
     # grabs the full html of the url
     source = requests.get(main.sendUrl()).text
@@ -26,6 +28,9 @@ def parse():
 
 
 def writeToDictFile(formatedDefinition):
+    # increment amount of words added to dictionary
+    global wordCount
+    wordCount += 1
     # some text formating
     word = main.paste().upper()
     dictHeader = '<' + 5*'-' + 'Definition of ' + word + 5*'-' + '>\n'
