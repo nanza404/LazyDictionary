@@ -1,3 +1,4 @@
+import os
 import main
 from bs4 import BeautifulSoup as bs
 import requests
@@ -38,7 +39,12 @@ def writeToDictFile(formatedDefinition):
     dictCapstone = '\n<' + (26+len(word))*'-' + '>\n\n\n'
     # putting it all together
     dictEntry = dictHeader + dateAndTime + formatedDefinition + dictCapstone
-    # opens up a file to append the dictionary definitions
-    with open('Dictionary.txt', 'a') as f:
-        f.write(dictEntry)
-
+    # opens up a file to prepend the dictionary definitions
+    with open('Dictionary.txt', 'r') as r, open('temp_file.txt', 'w') as w:
+        w.write(dictEntry)
+        for line in r:
+            w.write(line)
+    # removes the old dictionary file
+    os.remove('Dictionary.txt')
+    # renames the new dictionary file as Dictionary.txt
+    os.rename('temp_file.txt', 'Dictionary.txt')
