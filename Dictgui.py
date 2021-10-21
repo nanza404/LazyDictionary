@@ -14,7 +14,8 @@ class Window(QWidget):
         self.setFixedHeight(100)
         self.setFixedWidth(300)
         self.label = QLabel('word count: 0', self)
-        self.label.move(10, 0)
+        self.label.setFont(QFont('san serif', 15))
+        self.label.move(90, 0)
         self.button()
         self.oneClick = True
 
